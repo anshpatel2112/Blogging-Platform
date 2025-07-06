@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 const Login = () => {
 
-    
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        
+    }
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
