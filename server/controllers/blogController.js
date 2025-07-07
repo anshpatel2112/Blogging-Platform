@@ -97,7 +97,7 @@ export const togglePublish = async (req,res)=>{
     }
 }
 
-export const addComment = async (re ,res) => {
+export const addComment = async (req ,res) => {
     try {
         const {blog , name , content} = req.body;
         await Comment.create({blog,name,content});
