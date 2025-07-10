@@ -68,7 +68,7 @@ const Sidebar = () => {
         <div className='h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent'></div>
         <div className='mt-4 p-3 rounded-lg bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 border border-primary/10'>
           <p className='text-xs text-gray-600 text-center'>
-            <span className='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold'>TechBlog</span> Admin Panel
+            <span className='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold'>WriteGrid</span> Admin Panel
           </p>
         </div>
       </div>
