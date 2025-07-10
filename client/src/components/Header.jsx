@@ -21,25 +21,25 @@ const Header = () => {
     <div className='mx-8 sm:mx-16 xl:mx-24 relative'>
       <div className='text-center mt-20 mb-8'>
 
-        <div className='inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary'>
-            <p>New: AI feature integrated</p>
+        <div className='inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full text-sm text-primary shadow-lg'>
+            <p>New: AI-Powered Content Generation</p>
             <img src={assets.star_icon} className='w-2.5' alt="" />
         </div>
 
-        <h1 className='text-3xl sm:text-6xl font-semibold sm:leading-16 text-gray-700'>Your own <span className='text-primary'> blogging</span> <br/> platform.</h1>
+        <h1 className='text-3xl sm:text-6xl font-semibold sm:leading-16 text-gray-800'>Modern <span className='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'> Technical</span> <br/> <span className='bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent'>Blogging Platform</span></h1>
 
-        <p className='my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs text-gray-500'>This is your space to think out loud, to share what matters, and to write without filters. Whether it's one word or a thousand, your story starts right here.</p>
+        <p className='my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs text-gray-600'>Share your technical insights, tutorials, and innovations with the developer community. Built for creators who code and think beyond boundaries.</p>
 
-        <form onSubmit={onSubmitHandler} className='flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden'>
+        <form onSubmit={onSubmitHandler} className='flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded-xl overflow-hidden shadow-lg'>
             <input ref={inputRef} type="text" placeholder='Search for blogs' required className='w-full pl-4 outline-none'/>
-            <button type="submit" className='bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all cursor-pointer'>Search</button>
+            <button type="submit" className='bg-gradient-to-r from-primary via-secondary to-accent text-white px-8 py-2 m-1.5 rounded-lg hover:scale-105 transition-all cursor-pointer shadow-lg'>Search</button>
         </form>
 
       </div>
 
       <div className='text-center'>
         {
-        input && <button onClick={onClear} className='border font-light text-xs py-1 px-3 rounded-sm shadow-custom-sm cursor-pointer'>Clear Search</button>
+        input && <button onClick={onClear} className='border border-primary/30 bg-gradient-to-r from-primary/5 to-secondary/5 font-light text-xs py-2 px-4 rounded-full shadow-lg cursor-pointer hover:shadow-xl transition-all'>Clear Search</button>
         }
       </div>
 

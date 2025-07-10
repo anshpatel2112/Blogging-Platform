@@ -10,7 +10,34 @@
 }
 
 @theme {
-  --color-primary: #5044E5; 
+  --color-primary: #0EA5E9;
+  --color-primary-dark: #0284C7;
+  --color-primary-light: #38BDF8;
+  --color-secondary: #8B5CF6;
+  --color-secondary-dark: #7C3AED;
+  --color-secondary-light: #A78BFA;
+  --color-accent: #06B6D4;
+  --color-accent-dark: #0891B2;
+  --color-accent-light: #22D3EE;
+  --color-surface: #F8FAFC;
+  --color-surface-dark: #0F172A;
+  --color-surface-light: #FFFFFF;
+  --color-text: #1E293B;
+  --color-text-light: #64748B;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-border-light: #F1F5F9;
+  --color-success: #10B981;
+  --color-success-light: #34D399;
+  --color-warning: #F59E0B;
+  --color-warning-light: #FBBF24;
+  --color-error: #EF4444;
+  --color-error-light: #F87171;
+  --color-gradient-primary: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  --color-gradient-secondary: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+  --color-gradient-accent: linear-gradient(135deg, #06B6D4 0%, #0EA5E9 100%);
+  --color-gradient-warm: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  --color-gradient-cool: linear-gradient(135deg, #0EA5E9 0%, #8B5CF6 100%);
 }
 .rich-text { font-size: 15px;  }
 
