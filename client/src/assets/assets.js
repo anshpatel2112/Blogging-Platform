@@ -31,9 +31,11 @@ import dashboard_icon_1 from './dashboard_icon_1.svg'
 import dashboard_icon_2 from './dashboard_icon_2.svg'
 import dashboard_icon_3 from './dashboard_icon_3.svg'
 import dashboard_icon_4 from './dashboard_icon_4.svg'
+import logo_bp from './logo_bp.png'
 
 
 export const assets = {
+    logo_bp,
     facebook_icon,
     googleplus_icon,
     twitter_icon,
