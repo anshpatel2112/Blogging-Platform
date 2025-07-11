@@ -12,7 +12,10 @@ await connectDB();
 
 
 //Middlewares
-app.use(cors())
+app.use(cors({
+  origin: "https://blogging-platform-one-chi.vercel.app",
+  credentials: true
+}));
 app.use(express.json())
 app.use(cookieParser())
 
