@@ -10,6 +10,7 @@ import Comments from './pages/admin/Comments'
 import AdminLogin from './components/admin/Login'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+import ProtectedRoute from './components/ProtectedRoute'
 import 'quill/dist/quill.snow.css'
 import {Toaster} from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
@@ -25,10 +26,10 @@ const App = () => {
     <div>
       <Toaster/>
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
-        <Route path='/blog/:id' element={<Blog/>} />
+        <Route path='/blog/:id' element={<ProtectedRoute><Blog/></ProtectedRoute>} />
         <Route path='/admin' element={token && isAdmin ? <Layout/> : <AdminLogin/>}>
           <Route index element={<Dashboard/>}/>
           <Route path='addBlog' element={<AddBlog/>}/>

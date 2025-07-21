@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import bcrypt from 'bcryptjs';
 
 // Generate JWT token
 const generateToken = (userId, email, role = 'user') => {
@@ -41,7 +42,7 @@ export const registerUser = async (req, res) => {
         const user = await User.create({
             name,
             email,
-            password,
+            password, // This will be hashed by the pre-save middleware
             isVerified: true // Auto-verify for now
         });
 
@@ -70,6 +71,15 @@ export const registerUser = async (req, res) => {
 
     } catch (error) {
         console.error('Registration error:', error);
+        
+        // Handle duplicate email error
+        if (error.code === 11000) {
+            return res.status(400).json({
+                success: false,
+                message: 'User already exists with this email'
+            });
+        }
+        
         res.status(500).json({
             success: false,
             message: 'Server error during registration'

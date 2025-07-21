@@ -54,6 +54,7 @@ const Register = () => {
                 toast.error(data.message);
             }
         } catch (error) {
+            console.error('Registration error:', error);
             toast.error(error.response?.data?.message || 'Registration failed');
         } finally {
             setIsLoading(false);

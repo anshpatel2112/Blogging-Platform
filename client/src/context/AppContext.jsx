@@ -31,11 +31,21 @@ export const AppProvider = ({children}) =>{
             const { data } = await axios.get('/api/user/profile');
             if (data.success) {
                 setUser(data.user);
+            } else {
+                // If profile fetch fails, clear invalid token
+                localStorage.removeItem('token');
+                setToken(null);
+                delete axios.defaults.headers.common['Authorization'];
             }
         } catch (error) {
             console.log('Error fetching user profile:', error);
+            // If profile fetch fails, clear invalid token
+            localStorage.removeItem('token');
+            setToken(null);
+            delete axios.defaults.headers.common['Authorization'];
         }
     };
+    
     useEffect(()=>{
         fetchBlogs();
         const token = localStorage.getItem('token')

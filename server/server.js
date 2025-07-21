@@ -14,7 +14,7 @@ await connectDB();
 
 //Middlewares
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : 'http://localhost:5173',
+    origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : ['http://localhost:5173', 'http://localhost:4173'],
     credentials: true
 }));
 app.use(express.json())
