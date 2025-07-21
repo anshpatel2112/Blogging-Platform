@@ -32,7 +32,7 @@ export const adminLogin = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Login successful',
-      token, // <-- return token to frontend
+      token: `Bearer ${token}`, // <-- return token with Bearer prefix
     });
   } catch (error) {
     console.error('adminLogin error:', error);

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast';
-import { data } from 'react-router-dom';
 
 const Login = () => {
 
-    const {axios, setToken} = useAppContext();
+    const {axios, setToken, setUser} = useAppContext();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,6 +16,7 @@ const Login = () => {
 
           if(data.success){
             setToken(data.token)
+            setUser({ role: 'admin', email: email })
             localStorage.setItem('token', data.token)
             axios.defaults.headers.common['Authorization'] = data.token;
           }

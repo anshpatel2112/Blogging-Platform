@@ -1,8 +1,14 @@
 import jwt from 'jsonwebtoken';
 
 const auth = (req, res, next) => {
- 
-  const token = req.cookies?.token;
+  // Check for token in Authorization header first, then cookies
+  let token = req.headers.authorization;
+  
+  if (token && token.startsWith('Bearer ')) {
+    token = token.slice(7); // Remove 'Bearer ' prefix
+  } else {
+    token = req.cookies?.token;
+  }
 
   if (!token) {
     return res.status(401).json({ success: false, message: 'No token provided' });
