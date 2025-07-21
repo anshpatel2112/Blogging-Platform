@@ -37,11 +37,19 @@ const Register = () => {
         setIsLoading(true);
         
         try {
+            console.log('Sending registration data:', {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+            });
+            
             const { data } = await axios.post('/api/user/register', {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password
             });
+            
+            console.log('Registration response:', data);
 
             if (data.success) {
                 setToken(data.token);
@@ -55,7 +63,9 @@ const Register = () => {
             }
         } catch (error) {
             console.error('Registration error:', error);
-            toast.error(error.response?.data?.message || 'Registration failed');
+            console.error('Error response:', error.response?.data);
+            const errorMessage = error.response?.data?.message || error.message || 'Registration failed';
+            toast.error(errorMessage);
         } finally {
             setIsLoading(false);
         }

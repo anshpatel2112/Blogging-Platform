@@ -14,7 +14,7 @@ await connectDB();
 
 //Middlewares
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : ['http://localhost:5173', 'http://localhost:4173'],
+    origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : true,
     credentials: true
 }));
 app.use(express.json())
@@ -22,6 +22,16 @@ app.use(cookieParser())
 
 //Routes
 app.get("/",(req,res)=>res.send("API is Working"))
+
+// Add error handling middleware
+app.use((err, req, res, next) => {
+    console.error('Server error:', err);
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error'
+    });
+});
+
 app.use("/api/admin/",adminRouter)
 app.use("/api/blog/",blogRouter)
 app.use("/api/user/",userRouter)

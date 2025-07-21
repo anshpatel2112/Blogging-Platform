@@ -24,7 +24,9 @@ const Login = () => {
         setIsLoading(true);
         
         try {
+            console.log('Sending login data:', formData);
             const { data } = await axios.post('/api/user/login', formData);
+            console.log('Login response:', data);
 
             if (data.success) {
                 setToken(data.token);
@@ -38,7 +40,9 @@ const Login = () => {
             }
         } catch (error) {
             console.error('Login error:', error);
-            toast.error(error.response?.data?.message || 'Login failed');
+            console.error('Error response:', error.response?.data);
+            const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+            toast.error(errorMessage);
         } finally {
             setIsLoading(false);
         }
