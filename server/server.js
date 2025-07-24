@@ -4,7 +4,6 @@ import cors from 'cors'
 import connectDB from './configs/db.js';
 import adminRouter from './routes/adminRoutes.js';
 import blogRouter from './routes/blogRoutes.js';
-import userRouter from './routes/userRoutes.js';
 import cookieParser from 'cookie-parser';
 
 const app = express();
@@ -14,27 +13,17 @@ await connectDB();
 
 //Middlewares
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : true,
-    credentials: true
+  origin: "https://blogging-platform-one-chi.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
 }));
 app.use(express.json())
 app.use(cookieParser())
 
 //Routes
 app.get("/",(req,res)=>res.send("API is Working"))
-
-// Add error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Server error:', err);
-    res.status(500).json({
-        success: false,
-        message: 'Internal server error'
-    });
-});
-
 app.use("/api/admin/",adminRouter)
 app.use("/api/blog/",blogRouter)
-app.use("/api/user/",userRouter)
 
 const PORT = process.env.PORT || 3000;
 
