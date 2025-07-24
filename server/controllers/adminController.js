@@ -32,7 +32,7 @@ export const adminLogin = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Login successful',
-      token: `Bearer ${token}`, // <-- return token with Bearer prefix
+      token, // <-- return token to frontend
     });
   } catch (error) {
     console.error('adminLogin error:', error);
@@ -100,4 +100,3 @@ export const approveCommentById = async (req, res) => {
   }
 
 }
-
