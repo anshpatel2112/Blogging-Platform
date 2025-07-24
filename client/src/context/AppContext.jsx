@@ -13,7 +13,6 @@ export const AppProvider = ({children}) =>{
 
     const navigate = useNavigate();
     const [token , setToken] = useState(null);
-    const [user, setUser] = useState(null);
     const [blogs,setBlogs] = useState([]);
     const [input,setInput] = useState("");
 
@@ -26,38 +25,17 @@ export const AppProvider = ({children}) =>{
         }
     }
 
-    const fetchUserProfile = async () => {
-        try {
-            const { data } = await axios.get('/api/user/profile');
-            if (data.success) {
-                setUser(data.user);
-            } else {
-                // If profile fetch fails, clear invalid token
-                localStorage.removeItem('token');
-                setToken(null);
-                delete axios.defaults.headers.common['Authorization'];
-            }
-        } catch (error) {
-            console.log('Error fetching user profile:', error);
-            // If profile fetch fails, clear invalid token
-            localStorage.removeItem('token');
-            setToken(null);
-            delete axios.defaults.headers.common['Authorization'];
-        }
-    };
-    
     useEffect(()=>{
         fetchBlogs();
         const token = localStorage.getItem('token')
         if(token){
             setToken(token);
-            axios.defaults.headers.common['Authorization'] = token;
-            fetchUserProfile();
+            axios.defaults.headers.common['Authorization'] =` ${token}`
         }
     },[])
     
             const value  = {
-                axios,navigate,token,setToken,user,setUser,blogs,setBlogs,input,setInput,fetchUserProfile
+                axios,navigate,token,setToken,blogs,setBlogs,input,setInput
             }
     return(
 
