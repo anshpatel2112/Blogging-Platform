@@ -8,12 +8,18 @@ const Layout = () => {
 
     const {axios, setToken, navigate} = useAppContext()
 
-    const logout = ()=>{
-        localStorage.removeItem('token');
-        axios.defaults.headers.common['Authorization'] = null;
-        setToken(null)
-        navigate('/')
-    }
+   const logout = async () => {
+  try {
+    await axios.get('/api/admin/logout', {
+      withCredentials: true, 
+    });
+
+    setToken(null);         // Clear any frontend token state
+    navigate('/');          // Redirect to home/login
+  } catch (err) {
+    console.error("Logout failed:", err.message);
+  }
+};
 
   return (
     <>
