@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { useAppContext } from '../../context/AppContext'
+import React, { useState } from 'react';
+import { useAppContext } from '../../context/AppContext';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { axios } = useAppContext();
+  const { axios, setToken } = useAppContext();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,12 +16,13 @@ const Login = () => {
       const { data } = await axios.post(
         '/api/admin/login',
         { email, password },
-        { withCredentials: true } // ✅ required to send/receive cookies
+        { withCredentials: true }
       );
 
       if (data.success) {
         toast.success("Login successful!");
-       
+        setToken(true);                  
+        navigate('/admin');              //redirect to admin dashboard
       } else {
         toast.error(data.message);
       }
@@ -77,7 +79,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
